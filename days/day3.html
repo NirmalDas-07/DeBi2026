@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Day 3 💖</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins&display=swap" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="day-page">
+
+  <div class="day-container">
+
+    <h1>Day 3 💕</h1>
+    <p class="subtitle">Some days deserve traditions 😌</p>
+
+    <!-- STORY BOX -->
+    <div id="storyBox" class="message-box">
+      Some places hold memories…<br>
+      Some days demand traditions 💭
+    </div>
+
+    <!-- ACTION BUTTON -->
+    <button id="actionBtn" class="romantic-btn mt-30">
+      Reveal today’s surprise 🎁
+    </button>
+
+    <!-- IMAGE (HIDDEN INITIALLY) -->
+    <div id="imageBox" class="hidden mt-40">
+      <img
+        src="../assets/images/biriyani.jpg"
+        alt="Biriyani Time"
+        style="width:100%; border-radius:22px; box-shadow:0 14px 35px rgba(255,105,180,0.35);"
+      >
+    </div>
+
+    <!-- FINAL MESSAGE -->
+    <div id="finalMessage" class="final-message hidden mt-40">
+      Go meet your boyfriend now ☺️<br><br>
+      <strong>
+        Today is Wednesday…<br>
+        and some traditions should never be skipped 💖
+      </strong>
+    </div>
+
+    <!-- BACK LINK -->
+    <a href="../week.html" class="back-link mt-40">
+      ⬅ Back to birthday week
+    </a>
+
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    let step = 0;
+
+    const btn = document.getElementById("actionBtn");
+    const box = document.getElementById("storyBox");
+    const img = document.getElementById("imageBox");
+    const finalMsg = document.getElementById("finalMessage");
+
+    // If already completed, show final state directly
+    if (localStorage.getItem("day3Done") === "yes") {
+      box.innerHTML = `
+        Wednesday.<br>
+        <strong>Kanji Kada.</strong><br>
+        <strong>And you.</strong> 😋🍗
+      `;
+      img.classList.remove("hidden");
+      finalMsg.classList.remove("hidden");
+      btn.style.display = "none";
+    }
+
+    btn.addEventListener("click", () => {
+      step++;
+
+      if (step === 1) {
+        box.innerHTML = `
+          Today’s surprise is <strong>not a lasting one (Lasts in your mouth for minutes)</strong> 😌<br><br>
+          Please don’t think of taking lunch today…
+        `;
+        btn.innerText = "Tell me more 👀";
+      }
+
+      else if (step === 2) {
+        box.innerHTML = `
+          Wednesday.<br>
+          <strong>Kanji Kada.</strong><br>
+          <strong>And you.</strong> 😋🍗
+        `;
+        btn.innerText = "Okay… now show me 💖";
+      }
+
+      else if (step === 3) {
+        img.classList.remove("hidden");
+        finalMsg.classList.remove("hidden");
+        btn.style.display = "none";
+        localStorage.setItem("day3Done", "yes");
+      }
+    });
+  </script>
+
+</body>
+</html>

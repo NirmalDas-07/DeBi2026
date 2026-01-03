@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday 💖</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins&display=swap" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="day-page">
+
+  <div class="day-container">
+
+    <!-- 🎂 BIRTHDAY WISH -->
+    <div id="birthdayWish">
+
+      <h1 style="font-family:'Pacifico', cursive; font-size:40px; color:#d63384;">
+        Happy Birthday 💖
+      </h1>
+
+      <p class="subtitle" style="margin-top:10px;">
+        To the girl who makes my world softer, brighter, and happier
+      </p>
+
+      <div class="message-box">
+        Today isn’t just another day 🌸<br><br>
+        It’s the day the most beautiful soul<br>
+        came into this world 💫<br><br>
+        And I’m grateful every single day<br>
+        that I get to call you <strong>mine</strong> 💖
+      </div>
+
+      <button id="continueBtn" class="romantic-btn mt-30">
+        Continue my surprise 🎁
+      </button>
+
+    </div>
+
+    <!-- 🎁 REVEAL SECTION -->
+    <div id="surpriseSection" class="hidden">
+
+      <h1>Day 7 💕</h1>
+      <p class="subtitle">The final surprise… and my favorite one</p>
+
+      <div class="message-box">
+        Today’s gift is something you’ll use again… and again 😌<br>
+        It’s warm. It’s comforting.<br>
+        And yes… I’m a little jealous 😏
+      </div>
+
+      <button id="revealBtn" class="romantic-btn">
+        Reveal today’s surprise 🎀
+      </button>
+
+      <!-- GUESS -->
+      <div id="guessBox" class="hidden mt-30">
+        <div class="message-box">
+          <strong>Guess time 😌</strong><br><br>
+          One word.<br>
+          Something you’ll love using.
+          
+          <input
+            id="guessInput"
+            class="romantic-input mt-20"
+            placeholder="Type your guess..."
+          >
+
+          <button class="romantic-btn mt-20" onclick="checkGuess()">
+            Check 💖
+          </button>
+
+          <p id="guessResult" style="margin-top:14px; font-size:14px;"></p>
+
+          <button
+            id="finalBtn"
+            class="romantic-btn hidden mt-30"
+            onclick="finalReveal()"
+          >
+            Open the surprise 🎁
+          </button>
+        </div>
+      </div>
+
+      <!-- FINAL MESSAGE -->
+      <div id="finalMessage" class="final-message hidden mt-40">
+        <p>
+          Nice guess 😉<br><br>
+          But the real surprise is waiting with me 😌<br><br>
+          <strong>
+            Now you never have to borrow again…<br>
+            especially from boys 😏💖
+          </strong><br><br>
+          Open the packet from your boyfriend<br>
+          and you’ll know 💝
+        </p>
+      </div>
+
+      <a href="../week.html" class="back-link mt-40">
+        ⬅ Back to birthday week
+      </a>
+
+    </div>
+
+  </div>
+
+<script>
+  const continueBtn = document.getElementById("continueBtn");
+  const birthdayWish = document.getElementById("birthdayWish");
+  const surpriseSection = document.getElementById("surpriseSection");
+
+  const revealBtn = document.getElementById("revealBtn");
+  const guessBox = document.getElementById("guessBox");
+  const guessInput = document.getElementById("guessInput");
+  const guessResult = document.getElementById("guessResult");
+  const finalBtn = document.getElementById("finalBtn");
+  const finalMessage = document.getElementById("finalMessage");
+
+  continueBtn.addEventListener("click", () => {
+    birthdayWish.classList.add("hidden");
+    surpriseSection.classList.remove("hidden");
+  });
+
+  revealBtn.addEventListener("click", () => {
+    guessBox.classList.remove("hidden");
+    revealBtn.style.display = "none";
+  });
+
+  function checkGuess() {
+    const guess = guessInput.value.trim().toLowerCase();
+
+    if (!guess) {
+      guessResult.innerText = "Come on 😌 at least try";
+      return;
+    }
+
+    if (
+      guess.includes("jacket") ||
+      guess.includes("dress") ||
+      guess.includes("hood")
+    ) {
+      guessResult.innerText = "Hmm… not bad 😏";
+    } else {
+      guessResult.innerText = "Cute guess 😄";
+    }
+
+    finalBtn.classList.remove("hidden");
+  }
+
+  function finalReveal() {
+    finalBtn.style.display = "none";
+    finalMessage.classList.remove("hidden");
+  }
+</script>
+
+</body>
+</html>

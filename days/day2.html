@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Day 2 ☕</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins&display=swap" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="day-page">
+
+  <!-- ALREADY DONE POPUP -->
+  <div id="donePopup" class="photo-popup hidden">
+    <div class="photo-popup-box">
+      Today’s chai moment is already complete ☕💖<br>
+      Come back tomorrow 🌙
+    </div>
+  </div>
+
+  <div class="day-container">
+
+    <h1>Day 2 ☕</h1>
+    <p class="subtitle">Because some loves are best enjoyed with chai</p>
+
+    <div class="message-box">
+      Today is not about guessing…<br>
+      it’s about feeling warm 💖
+    </div>
+
+    <!-- REVEAL BUTTON -->
+    <button id="revealBtn" class="romantic-btn">
+      Reveal today’s surprise 🎁
+    </button>
+
+    <!-- CHAI CARD -->
+    <div id="chaiCard" class="hidden mt-30">
+
+      <div class="message-box">
+        Some days begin with chai…<br>
+        some memories stay forever ☕💞
+      </div>
+
+      <button id="continueBtn" class="romantic-btn mt-30">
+        Tap to continue ☺️
+      </button>
+
+    </div>
+
+    <!-- FINAL MESSAGE -->
+    <div id="finalMessage" class="final-message hidden mt-40">
+      <strong>Go meet your boyfriend now ☺️</strong><br><br>
+      <span class="soft-note">
+        and trust me…<br>
+        your chai will never feel the same ☕💖
+      </span>
+    </div>
+
+    <a href="../week.html" class="back-link mt-40">
+      ⬅ Back to birthday week
+    </a>
+
+  </div>
+
+<script>
+  const revealBtn = document.getElementById("revealBtn");
+  const chaiCard = document.getElementById("chaiCard");
+  const continueBtn = document.getElementById("continueBtn");
+  const finalMessage = document.getElementById("finalMessage");
+  const donePopup = document.getElementById("donePopup");
+
+  // If Day 2 already completed
+  if (localStorage.getItem("day2Done") === "yes") {
+    setTimeout(() => {
+      donePopup.classList.remove("hidden");
+      setTimeout(() => {
+        donePopup.classList.add("hidden");
+      }, 2500);
+    }, 400);
+  }
+
+  // Reveal chai card
+  revealBtn.addEventListener("click", () => {
+    if (localStorage.getItem("day2Done") === "yes") return;
+    chaiCard.classList.remove("hidden");
+    revealBtn.style.display = "none";
+  });
+
+  // Continue to final message
+  continueBtn.addEventListener("click", () => {
+    chaiCard.classList.add("hidden");
+    finalMessage.classList.remove("hidden");
+    localStorage.setItem("day2Done", "yes");
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Day 1 💖</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins&display=swap" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="day-page">
+
+  <!-- Already done popup -->
+  <div id="donePopup" class="photo-popup hidden">
+    <div class="photo-popup-box">
+      Day 1 already claimed 😌💖<br>
+      Come back tomorrow 🌙
+    </div>
+  </div>
+
+  <div class="day-container">
+
+    <h1>Day 1 💕</h1>
+    <p class="subtitle">The week begins… and so does my love for you</p>
+
+    <div class="message-box">
+      From today till your birthday,<br>
+      I want you to smile every single day 💖
+    </div>
+
+    <!-- Reveal button -->
+    <button id="revealBtn" class="romantic-btn">
+      Reveal today’s surprise 🎁
+    </button>
+
+    <!-- Game -->
+    <div id="game" class="hidden mt-30">
+
+      <p class="clue-text">Sweet, brown, melts in your mouth 🍫</p>
+      <p class="hint">🧩 Unscramble the letters</p>
+      <p class="jumbled">O C O H C L A T E</p>
+
+      <input
+        id="answer"
+        class="romantic-input"
+        placeholder="Type your answer..."
+      >
+
+      <button class="romantic-btn mt-30" onclick="unlockGift()">
+        Unlock 💖
+      </button>
+    </div>
+
+    <!-- Celebration -->
+    <div id="celebration" class="celebration hidden">
+      <div class="yay-text">YAYYY 🎉💖</div>
+    </div>
+
+    <!-- Final message -->
+    <div id="final" class="final-message hidden mt-40">
+      That’s all for Day 1 💖<br><br>
+      <strong>
+        Now go to your boyfriend<br>
+        and claim it with your overloaded cuteness 😌
+      </strong><br><br>
+      <span class="soft-note">
+        Come back tomorrow for the next surprise 🌙
+      </span>
+    </div>
+
+    <!-- Back link -->
+    <a href="../week.html" class="back-link mt-40">
+      ⬅ Back to birthday week
+    </a>
+
+  </div>
+
+<script>
+  const revealBtn = document.getElementById("revealBtn");
+  const game = document.getElementById("game");
+  const donePopup = document.getElementById("donePopup");
+
+  // Show popup ONLY if Day 1 already completed
+  if (localStorage.getItem("day1Done") === "yes") {
+    setTimeout(() => {
+      donePopup.classList.remove("hidden");
+      setTimeout(() => {
+        donePopup.classList.add("hidden");
+      }, 2500);
+    }, 400);
+  }
+
+  // Reveal game
+  revealBtn.addEventListener("click", () => {
+    if (localStorage.getItem("day1Done") === "yes") return;
+    game.classList.remove("hidden");
+    revealBtn.style.display = "none";
+  });
+
+  // Unlock gift
+  function unlockGift() {
+    const ans = document.getElementById("answer").value.trim().toLowerCase();
+
+    if (ans !== "chocolate") {
+      alert("Almost there 😄 Try again!");
+      return;
+    }
+
+    localStorage.setItem("day1Done", "yes");
+
+    const celebration = document.getElementById("celebration");
+    celebration.classList.remove("hidden");
+
+    setTimeout(() => {
+      celebration.classList.add("hidden");
+      document.getElementById("final").classList.remove("hidden");
+    }, 2200);
+  }
+</script>
+
+</body>
+</html>

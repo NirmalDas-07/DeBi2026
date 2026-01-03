@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Birthday Week 💖</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="week-page">
+
+  <h1 class="week-title">Your Birthday Week 💝</h1>
+  <p class="week-sub">One little surprise… every day just for you 🌸</p>
+
+  <div class="week-grid">
+
+    <!-- DAY 1 -->
+    <div class="day-card" data-day="1">
+      <div class="day-icon">🔒</div>
+      <div class="day-text">Day 1<br><span>Jan 5</span></div>
+      <div class="hearts">💖💖</div>
+    </div>
+
+    <!-- DAY 2 -->
+    <div class="day-card" data-day="2">
+      <div class="day-icon">🔒</div>
+      <div class="day-text">Day 2<br><span>Jan 6</span></div>
+      <div class="hearts">💖💖</div>
+    </div>
+
+    <!-- DAY 3 -->
+    <div class="day-card" data-day="3">
+      <div class="day-icon">🔒</div>
+      <div class="day-text">Day 3<br><span>Jan 7</span></div>
+      <div class="hearts">💖💖</div>
+    </div>
+
+    <!-- DAY 4 -->
+    <div class="day-card" data-day="4">
+      <div class="day-icon">🔒</div>
+      <div class="day-text">Day 4<br><span>Jan 8</span></div>
+      <p class="countdown"></p>
+    </div>
+
+    <!-- DAY 5 -->
+    <div class="day-card" data-day="5">
+      <div class="day-icon">🔒</div>
+      <div class="day-text">Day 5<br><span>Jan 9</span></div>
+      <p class="countdown"></p>
+    </div>
+
+    <!-- DAY 6 -->
+    <div class="day-card" data-day="6">
+      <div class="day-icon">🔒</div>
+      <div class="day-text">Day 6<br><span>Jan 10</span></div>
+      <p class="countdown"></p>
+    </div>
+
+    <!-- DAY 7 -->
+    <div class="day-card day-7" data-day="7">
+      <div class="day-icon">🎂</div>
+      <div class="day-text">Day 7<br><span>Jan 11 🎉</span></div>
+      <p class="countdown">The big day 💝</p>
+    </div>
+
+  </div>
+
+<script>
+  // 🔧 CHANGE THESE DATES ONLY IF NEEDED
+  const startDate = new Date("2026-01-05"); // Day 1
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  document.querySelectorAll(".day-card").forEach(card => {
+    const day = parseInt(card.dataset.day);
+    const unlockDate = new Date(startDate);
+    unlockDate.setDate(startDate.getDate() + (day - 1));
+
+    const icon = card.querySelector(".day-icon");
+    const countdown = card.querySelector(".countdown");
+    const doneKey = `day${day}Done`;
+
+    // 🔒 LOCKED
+    if (today < unlockDate) {
+      card.classList.add("locked");
+
+      if (countdown) {
+        const diffDays = Math.ceil((unlockDate - today) / (1000*60*60*24));
+        countdown.textContent =
+          diffDays === 1
+            ? "Opens tomorrow 🤍"
+            : `Opens in ${diffDays} days 📅`;
+      }
+
+      card.onclick = () => {
+        alert("Not yet 😌 Come back on the right day 💕");
+      };
+      return;
+    }
+
+    // 🔓 UNLOCKED
+    card.classList.add("unlocked");
+    card.onclick = () => {
+      window.location.href = `days/day${day}.html`;
+    };
+
+    // ❤️ COMPLETED
+    if (localStorage.getItem(doneKey) === "yes") {
+      icon.textContent = "❤️";
+    } else {
+      icon.textContent = "🔓";
+    }
+  });
+</script>
+
+</body>
+</html>

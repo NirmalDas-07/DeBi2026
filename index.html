@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For My Love 💖</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="index-page">
+
+  <!-- POPUP (HIDDEN BY DEFAULT) -->
+  <div id="photoPopup" class="photo-popup">
+    <div class="photo-popup-box">Heyy Devu.. Click again 😌💖</div>
+  </div>
+
+  <div class="entry-card">
+
+    <h1>For the Girl Who Owns My Heart 💕</h1>
+
+    <p class="photo-hint">Psst… touch our photo 😉</p>
+
+    <img
+      src="assets/images/couple.jpg"
+      alt="Us together"
+      class="entry-photo"
+      id="entryPhoto"
+    >
+
+    <p class="entry-text">
+      <strong>Enter your Boyfriend's phone lock 💌</strong>
+    </p>
+
+    <input
+      type="password"
+      id="password"
+      class="romantic-input"
+      placeholder="His phone lock is..."
+    >
+
+    <button class="romantic-btn" onclick="checkPassword()">
+      Unlock My Love 💖
+    </button>
+
+    <p id="error" class="error-text"></p>
+
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    let photoClicks = 0;
+    let popupTimeout = null;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const photo = document.getElementById("entryPhoto");
+      const popup = document.getElementById("photoPopup");
+      const box = popup.querySelector(".photo-popup-box");
+
+      photo.addEventListener("click", () => {
+        photoClicks++;
+
+        if (photoClicks === 1) box.innerText = "Heyy Devu.. Click again 😌💖";
+        else if (photoClicks === 2) box.innerText = "One more time 😄💗";
+        else if (photoClicks === 3) box.innerText = "Somebody is curious here 😘.. One more time..";
+        else box.innerText = "Okay okay… enough 😆💞.. Proceed now";
+
+        popup.classList.add("show");
+
+        clearTimeout(popupTimeout);
+        popupTimeout = setTimeout(() => {
+          popup.classList.remove("show");
+        }, 2500);
+      });
+    });
+
+    function checkPassword() {
+      const value = document.getElementById("password").value.trim();
+
+      if (value === "110101") {
+        window.location.href = "week.html";
+      } else {
+        document.getElementById("error").innerText =
+          "Hmm… that doesn’t feel right 😌 Try again";
+      }
+    }
+  </script>
+
+</body>
+</html>

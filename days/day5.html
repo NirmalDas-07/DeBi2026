@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Day 5 👜</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="day-page">
+
+  <div class="day-container">
+
+    <h1>Day 5 👜</h1>
+    <p class="subtitle">Some dreams are meant to be carried… every day</p>
+
+    <button id="revealBtn" class="romantic-btn">
+      Reveal today’s surprise 🎁
+    </button>
+
+    <!-- TEASER -->
+    <div id="teaser" class="message-box hidden mt-30">
+      Not chocolate.<br>
+      Not chai.<br><br>
+      Something you once said…<br>
+      <em>“One day, I’ll buy this.”</em> 💭
+      <br><br>
+      <button class="romantic-btn" onclick="showGuess()">Make a guess 💌</button>
+    </div>
+
+    <!-- GUESS -->
+    <div id="guessBox" class="hidden mt-30">
+      <input
+        id="guessInput"
+        class="romantic-input"
+        placeholder="Your guess..."
+      >
+      <button class="romantic-btn mt-30" onclick="checkGuess()">
+        Submit
+      </button>
+    </div>
+
+    <!-- RESPONSE -->
+    <div id="response" class="message-box hidden mt-30"></div>
+
+    <!-- REVEAL BRAND -->
+    <div id="brandReveal" class="hidden mt-30">
+      <button class="romantic-btn" onclick="revealBrand()">
+        Reveal the brand 👜
+      </button>
+    </div>
+
+    <!-- BRAND TEXT -->
+    <div id="brandText" class="message-box hidden mt-30">
+      From your bucket list<br>
+      to my hands<br>
+      to your shoulders 💕
+    </div>
+
+    <!-- IMAGE -->
+    <div id="imageBox" class="hidden mt-30">
+      <img src="../assets/images/zouk-bag.jpg" style="width:100%; border-radius:20px;">
+      <p class="soft-note mt-30">
+        You don’t just carry a bag…<br>
+        you carry a dream today 🤍
+      </p>
+    </div>
+
+    <!-- FINAL -->
+    <div id="finalMsg" class="final-message hidden mt-40">
+      Go meet your boyfriend now ☺️<br><br>
+      Some dreams aren’t delivered…<br>
+      they’re handed with love 👜💖
+    </div>
+
+    <a href="../week.html" class="back-link mt-40">
+      ⬅ Back to birthday week
+    </a>
+
+  </div>
+
+<script>
+  const revealBtn = document.getElementById("revealBtn");
+
+  revealBtn.addEventListener("click", () => {
+    revealBtn.style.display = "none";
+    document.getElementById("teaser").classList.remove("hidden");
+  });
+
+  function showGuess() {
+    document.getElementById("guessBox").classList.remove("hidden");
+  }
+
+  function checkGuess() {
+    const guess = document.getElementById("guessInput").value.trim().toLowerCase();
+    const response = document.getElementById("response");
+
+    if (guess === "zouk") {
+      response.innerHTML = "Aaaah 😌💖<br>You knew it… didn’t you?";
+    } else {
+      response.innerHTML = "That’s okay ☺️<br>Some surprises are better revealed than guessed 🫶";
+    }
+
+    response.classList.remove("hidden");
+    document.getElementById("brandReveal").classList.remove("hidden");
+  }
+
+  function revealBrand() {
+    document.getElementById("brandText").classList.remove("hidden");
+
+    setTimeout(() => {
+      document.getElementById("imageBox").classList.remove("hidden");
+      document.getElementById("finalMsg").classList.remove("hidden");
+    }, 1200);
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Day 6 💖</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins&display=swap" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="day-page">
+
+  <div class="day-container">
+
+    <h1>Day 6 💕</h1>
+    <p class="subtitle">Some feelings are better heard… than read</p>
+
+    <!-- Intro message -->
+    <div class="message-box">
+      Today’s surprise isn’t something you can hold 💌<br>
+      It’s something you need to <strong>listen</strong> 🤍<br><br>
+      🎧 <em>Headphones strongly recommended</em>
+    </div>
+
+    <!-- REVEAL BUTTON -->
+    <button id="revealBtn" class="romantic-btn">
+      Reveal today’s surprise 🎧
+    </button>
+
+    <!-- VOICE NOTE -->
+    <div id="voiceBox" class="hidden mt-30">
+
+      <div class="message-box">
+        <p><strong>🎧 Voice note from your boyfriend</strong></p>
+        <p style="font-size:14px; color:#666;">Duration: 7:44</p>
+        <p style="font-size:14px; color:#666;">
+          Please listen till the very end 🤍
+        </p>
+
+        <audio id="voiceAudio" controls style="width:100%; margin-top:12px;">
+          <source src="../assets/audio/day6-voice.mp3" type="audio/mpeg">
+          Your browser does not support audio playback.
+        </audio>
+      </div>
+
+    </div>
+
+    <!-- FINISHED LISTENING BUTTON -->
+    <button id="finishBtn" class="romantic-btn hidden mt-30">
+      Finished listening 💖
+    </button>
+
+    <!-- FINAL MESSAGE -->
+    <div id="finalMessage" class="final-message hidden mt-40">
+      <p>
+        I know you can't meet your boyfriend today ☺️<br><br>
+        <strong>
+          But Trust me, his thoughts and his voice is only for you 💖
+        </strong>
+      </p>
+    </div>
+
+    <!-- BACK LINK -->
+    <a href="../week.html" class="back-link mt-40">
+      ⬅ Back to birthday week
+    </a>
+
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    const revealBtn = document.getElementById("revealBtn");
+    const voiceBox = document.getElementById("voiceBox");
+    const audio = document.getElementById("voiceAudio");
+    const finishBtn = document.getElementById("finishBtn");
+    const finalMsg = document.getElementById("finalMessage");
+
+    // Reveal audio card
+    revealBtn.addEventListener("click", () => {
+      voiceBox.classList.remove("hidden");
+      revealBtn.style.display = "none";
+    });
+
+    // Show "Finished listening" button ONLY after audio ends
+    audio.addEventListener("ended", () => {
+      finishBtn.classList.remove("hidden");
+    });
+
+    // Final reveal
+    finishBtn.addEventListener("click", () => {
+      finishBtn.style.display = "none";
+      finalMsg.classList.remove("hidden");
+    });
+  </script>
+
+</body>
+</html>
